@@ -1,0 +1,215 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IrvanStream - Nonton Donghua Subtitle Indonesia</title>
+    <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+    <header class="navbar">
+        <h1>IrvanStream</h1>
+        <p>Tempat Nonton Donghua Subtitle Indonesia</p>
+    </header>
+
+    <nav class="menu-grid">
+        <ul>
+        <li>HOME</li>
+        <li>DONGHUA</li>
+        <li>BOOKMARK</li>
+        <li>SCHEDULE</li>
+        <li>RIWAYAT</li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="featured-grid">
+        <div class="featured-main-slider">
+            <button class="slider-btn left" onclick="prevSlide()">❮</button>
+            <div class="featured-content column">
+            <img id="featured-img" src="gambar/apotheosis.jpg" alt="Featured" class="featured-landscape" />
+            <div class="featured-info">
+                <h2 id="featured-title">Apotheosis</h2>
+                <p id="featured-desc">Luo Zheng yang dulunya adalah Tuan Muda dari keluarga besar, kini memulai latihan untuk menjadi dewa.</p>
+                <button class="btn-featured">Tonton</button>
+            </div>
+            </div>
+            <button class="slider-btn right" onclick="nextSlide()">❯</button>
+        </div>
+
+        <aside class="history-section">
+            <h2>History Tonton</h2>
+            <ul class="history-list">
+            <li>Apotheosis - Ep 10</li>
+            <li>Renegade Immortal - Ep 36</li>
+            <li>Swallowed Star - Ep 96</li>
+            <li>Battle Through the Heavens - Ep 300</li>
+            <li>Perfect World - Ep 135</li>
+            <li>Legend of Tang - Ep 50</li>
+            <li>The King's Avatar - Ep 12</li>
+            <li>Fog Hill of Five Elements - Ep 3</li>
+            </ul>
+        </aside>
+        </section>
+
+        <h2 class="section-title">Terpopuler Hari Ini</h2>
+        <div class="card-scroll-wrapper">
+        <div class="card-scroll" id="populer-container">
+            <div class="card">
+            <img src="img/populer1.jpg" alt="Donghua 1">
+            <h3>Battle Through the Heavens</h3>
+            </div>
+            <div class="card">
+            <img src="img/populer2.jpg" alt="Donghua 2">
+            <h3>Perfect World</h3>
+            </div>
+            <div class="card">
+            <img src="img/populer3.jpg" alt="Donghua 3">
+            <h3>Martial Universe</h3>
+            </div>
+            <div class="card">
+            <img src="img/populer4.jpg" alt="Donghua 4">
+            <h3>Stellar Transformations</h3>
+            </div>
+            <div class="card">
+            <img src="img/populer5.jpg" alt="Donghua 5">
+            <h3>Apotheosis</h3>
+            </div>
+            <div class="card">
+            <img src="img/populer6.jpg" alt="Donghua 6">
+            <h3>Throne of Seal</h3>
+            </div>
+            <div class="card">
+            <img src="img/populer7.jpg" alt="Donghua 7">
+            <h3>Fog Hill of Five Elements</h3>
+            </div>
+            <div class="card">
+            <img src="img/populer8.jpg" alt="Donghua 8">
+            <h3>Swallowed Star</h3>
+            </div>
+        </div>
+        </div>
+
+        <h2 class="section-title">Rilisan Terbaru</h2>
+        <div class="card-container" id="rilisan-container">
+        <!-- Rilisan cards will be dynamically added here -->
+        </div>
+
+        <div class="pagination">
+        <button class="page-btn" id="prev-btn" onclick="changePage(-1)">Previous</button>
+        <div id="page-numbers"></div>
+        <button class="page-btn" id="next-btn" onclick="changePage(1)">Next</button>
+        </div>
+    </main>
+
+    <!-- Tambahkan script JS di bawah -->
+    <script>
+        const featuredItems = [
+        {
+            img: 'gambar/apotheosis.jpg',
+            title: 'Apotheosis',
+            desc: 'Luo Zheng yang dulunya adalah Tuan Muda dari keluarga besar, kini memulai latihan untuk menjadi dewa.'
+        },
+        {
+            img: 'gambar/perfectworld.jpg',
+            title: 'Perfect World',
+            desc: 'Seorang anak kecil memulai petualangan di dunia yang penuh kekuatan spiritual.'
+        },
+        {
+            img: 'gambar/stellar.jpg',
+            title: 'Stellar Transformations',
+            desc: 'Qin Yu berlatih teknik rahasia untuk mendapatkan kekuatan luar biasa dan menyelamatkan keluarganya.'
+        },
+        {
+            img: 'gambar/kingsavatar.jpg',
+            title: 'The King\'s Avatar',
+            desc: 'Seorang legenda e-sport kembali membangun jalannya di dunia kompetitif game Glory.'
+        }
+        ];
+
+        const rilisanData = [
+        { img: 'img/rilisan1.jpg', title: 'Against the Gods - Episode 10' },
+        { img: 'img/rilisan2.jpg', title: 'Douluo Dalu - Episode 256' },
+        { img: 'img/rilisan3.jpg', title: 'The King\'s Avatar - Episode 13' },
+        { img: 'img/rilisan4.jpg', title: 'White Cat Legend - Episode 6' },
+        { img: 'img/rilisan5.jpg', title: 'Link Click S2 - Episode 2' },
+        { img: 'img/rilisan6.jpg', title: 'Tales of Demons and Gods - Episode 180' },
+        { img: 'img/rilisan7.jpg', title: 'Fox Spirit Matchmaker - Episode 98' },
+        { img: 'img/rilisan8.jpg', title: 'The Great Ruler - Episode 7' },
+        { img: 'img/rilisan9.jpg', title: 'The Outcast - Episode 4' },
+        { img: 'img/rilisan10.jpg', title: 'Rakshasa Street - Episode 15' },
+        { img: 'img/rilisan11.jpg', title: 'Spirit Sword Sovereign - Episode 300' },
+        { img: 'img/rilisan12.jpg', title: 'Carp Reborn - Episode 20' },
+        { img: 'img/rilisan13.jpg', title: 'Peerless Martial Spirit - Episode 58' },
+        { img: 'img/rilisan14.jpg', title: 'Jade Dynasty - Episode 33' },
+        { img: 'img/rilisan15.jpg', title: 'Immortality - Episode 9' },
+        { img: 'img/rilisan16.jpg', title: 'My Senior Martial Brother - Episode 12' },
+        { img: 'img/rilisan17.jpg', title: 'God of Ten Thousand Realms - Episode 3' },
+        { img: 'img/rilisan18.jpg', title: 'Heavenly Dao - Episode 14' },
+        { img: 'img/rilisan19.jpg', title: 'One Step Toward Freedom - Episode 88' },
+        { img: 'img/rilisan20.jpg', title: 'Scissor Seven - Episode 4' },
+        // Add all rilisan data...
+        ];
+
+        let currentIndex = 0;
+        let currentPage = 1;
+        const itemsPerPage = 5;
+
+        function showSlide(index) {
+        const item = featuredItems[index];
+        document.getElementById('featured-img').src = item.img;
+        document.getElementById('featured-title').textContent = item.title;
+        document.getElementById('featured-desc').textContent = item.desc;
+        }
+
+        function prevSlide() {
+        currentIndex = (currentIndex - 1 + featuredItems.length) % featuredItems.length;
+        showSlide(currentIndex);
+        }
+
+        function nextSlide() {
+        currentIndex = (currentIndex + 1) % featuredItems.length;
+        showSlide(currentIndex);
+        }
+
+        function renderRilisan() {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const rilisanToShow = rilisanData.slice(startIndex, endIndex);
+
+        const container = document.getElementById('rilisan-container');
+        container.innerHTML = '';
+
+        rilisanToShow.forEach(item => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+            <img src="${item.img}" alt="${item.title}">
+            <h3>${item.title}</h3>
+            `;
+            container.appendChild(card);
+        });
+
+        renderPagination();
+        }
+
+        function renderPagination() {
+        const totalPages = Math.ceil(rilisanData.length / itemsPerPage);
+        const pageNumbers = document.getElementById('page-numbers');
+        pageNumbers.innerHTML = `Page ${currentPage} of ${totalPages}`;
+        }
+
+        function changePage(direction) {
+        const totalPages = Math.ceil(rilisanData.length / itemsPerPage);
+        currentPage = Math.min(Math.max(currentPage + direction, 1), totalPages);
+        renderRilisan();
+        }
+
+        // Initialize the first slide and rilisan
+        document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentIndex);
+        renderRilisan();
+        });
+    </script>
+    </body>
+    </html>
